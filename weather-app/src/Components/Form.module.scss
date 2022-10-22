@@ -16,9 +16,10 @@
   .textField {
     text-align: center;
     border: 1px solid #bfbfbf;
-  }
-  .textField:is(:focus, :valid) {
-    border: 2px solid #43affc;
+
+    &:is(:focus, :valid) {
+      border: 2px solid #43affc;
+    }
   }
 
   .separator {
@@ -31,7 +32,7 @@
     justify-content: center;
 
     &:before {
-      content: 'or';
+      content: "or";
       color: #ccc;
       font-size: 19px;
       padding: 0 15px;
@@ -43,5 +44,12 @@
     cursor: pointer;
     background: #1d1b31;
     margin-bottom: 20px;
+    transition: ease-in-out 200ms;
+
+    &:hover {
+      color: #1d1b31;
+      background-color: white;
+      border: 1px solid #1d1b31;
+    }
   }
 }
