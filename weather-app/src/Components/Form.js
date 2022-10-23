@@ -1,9 +1,13 @@
 import React from 'react'
+import ErrorMessage from './ErrorMessage'
+import LoadingMessage from './LoadingMessage'
 import styles from './Form.module.scss'
 
 const Form = () => {
   return (
     <form className={styles.wrapper}>
+        {false && <ErrorMessage />}
+        {false && <LoadingMessage />}
         <input 
           className={styles.textField}
           type="text" 
@@ -12,10 +16,12 @@ const Form = () => {
           spellCheck="false"
           autoComplete="off"
           required
-
         />
         <div className={styles.separator}></div>
-        <button className={styles.btn}>Get Device Location</button>
+        <button 
+          type='button' 
+          className={styles.btn}
+        >Get Device Location</button>
     </form>
   )
 }
