@@ -5,6 +5,7 @@ import styles from './Form.module.scss'
 const Form = ({ search, query, setQuery, searchByPos, weather }) => {
   
   return (
+    
     <form 
       className={styles.wrapper}
       onSubmit={(e) => e.preventDefault()}
