@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './WeatherInfo.module.scss'
+import { motion } from "framer-motion";
 
 const WeatherInfo = ({ weather }) => {
   const weatherId = weather.weather[0].id
@@ -23,7 +24,17 @@ const WeatherInfo = ({ weather }) => {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <motion.div 
+      className={styles.wrapper}
+      initial={{ x: -180, rotate: -40, scale: 0, opacity: 0 }}
+      animate={{ x: 0, rotate: 0, scale: 1, opacity: 1}}
+      exit={{ opacity: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 30
+      }}
+    >
       <img src={`./images/${weatherIcon}`} alt="weatherIcon" />
       <div className={styles.temp}>
         <span className={styles.numb}>{Math.round(weather.main.temp)}</span>
@@ -57,7 +68,7 @@ const WeatherInfo = ({ weather }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

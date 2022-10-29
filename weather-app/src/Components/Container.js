@@ -3,6 +3,7 @@ import Header from './Header'
 import Form from './Form'
 import WeatherInfo from './WeatherInfo'
 import styles from './Container.module.scss'
+import { motion } from 'framer-motion'
 
 const Container = () => {
   const [lat, setLat] = useState()
@@ -41,9 +42,28 @@ const Container = () => {
     console.log(weather)
   }, [weather])
 
+
   return (
-    <div className={styles.wrapper}>
-      <Header title="Weather App" setWeather={setWeather} />
+    <motion.div
+      className={styles.wrapper}
+      initial={{ x: -180, rotate: -60, scale: 0, opacity: 0 }}
+      animate={{ x: 0, rotate: 0, scale: 1, opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{
+        type: 'spring',
+        stiffness: 260,
+        damping: 30,
+      }}
+    >
+      <Header
+        title="Weather App"
+        weatherStatus={weather.name}
+        setWeather={setWeather}
+        initial={{ x: -180, scale: 0, opacity: 0 }}
+        animate={{ x: 0, rotate: 0, scale: 1, opacity: 1 }}
+        exit={{ opacity: 0, x: -180, scale: 0 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+      />
       {weather.cod !== 200 && (
         <Form
           search={search}
@@ -54,7 +74,7 @@ const Container = () => {
         />
       )}
       {weather.cod === 200 && <WeatherInfo weather={weather} />}
-    </div>
+    </motion.div>
   )
 }
 export default Container
