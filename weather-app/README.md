@@ -1,3 +1,3 @@
 # Live preview
 
-https://michaeldevvv.github.io/react-weather-app/
+https://MickTheDev.github.io/react-weather-app/
